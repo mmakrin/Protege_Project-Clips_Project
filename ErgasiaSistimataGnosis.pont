@@ -1,0 +1,295 @@
+; Fri Nov 29 01:02:20 EET 2024
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(multislot inverse_of_hasOutput
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent)
+;+		(inverse-slot hasOutput)
+		(create-accessor read-write))
+	(single-slot hasOutput
+		(type INSTANCE)
+;+		(allowed-classes Output Sensor)
+;+		(cardinality 0 1)
+;+		(inverse-slot inverse_of_hasOutput)
+		(create-accessor read-write))
+	(single-slot hasSensorM1
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasSensorM2
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot inverse_of_HasOutput
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent)
+		(create-accessor read-write))
+	(single-slot hasSensorM3
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Monitors
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent Input Output)
+;+		(cardinality 1 1)
+;+		(inverse-slot MonitoredBy)
+		(create-accessor read-write))
+	(multislot hasInput
+		(type INSTANCE)
+;+		(allowed-classes Input Sensor)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot InputTo)
+		(create-accessor read-write))
+	(multislot OutputTo
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent System)
+;+		(inverse-slot has%CE%9Futput)
+		(create-accessor read-write))
+	(single-slot InputValue
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot MonitoredBy
+		(type INSTANCE)
+;+		(allowed-classes Sensor Output)
+;+		(inverse-slot Monitors)
+		(create-accessor read-write))
+	(single-slot hasStatus
+		(type SYMBOL)
+		(allowed-values Normal ShortCircuitFault SignificantBitCutoff)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot ConnectedTo
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent Sensor Output)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot hasoutput
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot SensorTo
+		(type INSTANCE)
+;+		(allowed-classes System)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot hasSensor)
+		(create-accessor read-write))
+	(single-slot Measures
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot ErgasiaSistimataGnosis_Class22
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot hasSensor
+		(type INSTANCE)
+;+		(allowed-classes Sensor)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot SensorTo)
+		(create-accessor read-write))
+	(single-slot ErgasiaSistimataGnosis_Class65
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot has%CE%9Futput
+		(type INSTANCE)
+;+		(allowed-classes Output Sensor)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot OutputTo)
+		(create-accessor read-write))
+	(multislot hasComponent
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot ComponentTo)
+		(create-accessor read-write))
+	(single-slot hasInput1
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasInput3
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasInput2
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasInput4
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot InputTo
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent System)
+		(cardinality 1 ?VARIABLE)
+;+		(inverse-slot hasInput)
+		(create-accessor read-write))
+	(multislot ComponentTo
+		(type INSTANCE)
+;+		(allowed-classes System)
+;+		(inverse-slot hasComponent)
+		(create-accessor read-write))
+	(single-slot OutputValue
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass OperationCycle
+	(is-a USER)
+	(role concrete)
+	(single-slot hasSensorM1
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasSensorM2
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasoutput
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasSensorM3
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasInput1
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasInput3
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasInput2
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasInput4
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass ElectronicComponent
+	(is-a USER)
+	(role abstract)
+	(multislot ComponentTo
+		(type INSTANCE)
+;+		(allowed-classes System)
+		(create-accessor read-write))
+	(single-slot hasStatus
+		(type SYMBOL)
+		(allowed-values Normal ShortCircuitFault SignificantBitCutoff)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot has%CE%9Futput
+		(type INSTANCE)
+;+		(allowed-classes Output Sensor)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot hasInput
+		(type INSTANCE)
+;+		(allowed-classes Input Sensor)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot MonitoredBy
+		(type INSTANCE)
+;+		(allowed-classes Sensor Output)
+		(create-accessor read-write)))
+
+(defclass Adder
+	(is-a ElectronicComponent)
+	(role concrete))
+
+(defclass Multiplier
+	(is-a ElectronicComponent)
+	(role concrete))
+
+(defclass System
+	(is-a USER)
+	(role concrete)
+	(multislot hasComponent
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot has%CE%9Futput
+		(type INSTANCE)
+;+		(allowed-classes Output Sensor)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot hasSensor
+		(type INSTANCE)
+;+		(allowed-classes Sensor)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot hasInput
+		(type INSTANCE)
+;+		(allowed-classes Input Sensor)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
+
+(defclass Input
+	(is-a USER)
+	(role concrete)
+	(multislot InputTo
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent System)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(multislot MonitoredBy
+		(type INSTANCE)
+;+		(allowed-classes Sensor Output)
+		(create-accessor read-write))
+	(single-slot InputValue
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Output
+	(is-a USER)
+	(role concrete)
+	(single-slot OutputValue
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot MonitoredBy
+		(type INSTANCE)
+;+		(allowed-classes Sensor Output)
+		(create-accessor read-write))
+	(multislot OutputTo
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent System)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))
+
+(defclass Sensor
+	(is-a USER)
+	(role concrete)
+	(single-slot Measures
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot hasStatus
+		(type SYMBOL)
+		(allowed-values Normal ShortCircuitFault)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Monitors
+		(type INSTANCE)
+;+		(allowed-classes ElectronicComponent Input Output)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot SensorTo
+		(type INSTANCE)
+;+		(allowed-classes System)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write)))

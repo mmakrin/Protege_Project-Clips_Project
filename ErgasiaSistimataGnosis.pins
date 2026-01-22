@@ -1,0 +1,227 @@
+; Fri Nov 29 01:02:20 EET 2024
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([Circle1] of  OperationCycle
+
+	(hasInput1 21)
+	(hasInput2 28)
+	(hasInput3 10)
+	(hasInput4 25)
+	(hasoutput 18)
+	(hasSensorM1 10)
+	(hasSensorM2 24)
+	(hasSensorM3 26))
+
+([Circle10] of  OperationCycle
+
+	(hasInput1 6)
+	(hasInput2 4)
+	(hasInput3 25)
+	(hasInput4 12)
+	(hasoutput 28)
+	(hasSensorM1 12)
+	(hasSensorM2 31)
+	(hasSensorM3 12))
+
+([Circle2] of  OperationCycle
+
+	(hasInput1 7)
+	(hasInput2 25)
+	(hasInput3 13)
+	(hasInput4 15)
+	(hasoutput 3)
+	(hasSensorM1 0)
+	(hasSensorM2 3)
+	(hasSensorM3 3))
+
+([Circle3] of  OperationCycle
+
+	(hasInput1 11)
+	(hasInput2 17)
+	(hasInput3 24)
+	(hasInput4 31)
+	(hasoutput 14)
+	(hasSensorM1 22)
+	(hasSensorM2 6)
+	(hasSensorM3 8))
+
+([Circle4] of  OperationCycle
+
+	(hasInput1 18)
+	(hasInput2 11)
+	(hasInput3 28)
+	(hasInput4 21)
+	(hasoutput 0)
+	(hasSensorM1 4)
+	(hasSensorM2 12)
+	(hasSensorM3 12))
+
+([Circle5] of  OperationCycle
+
+	(hasInput1 25)
+	(hasInput2 24)
+	(hasInput3 30)
+	(hasInput4 10)
+	(hasoutput 12)
+	(hasSensorM1 18)
+	(hasSensorM2 16)
+	(hasSensorM3 12))
+
+([Circle6] of  OperationCycle
+
+	(hasInput1 12)
+	(hasInput2 19)
+	(hasInput3 11)
+	(hasInput4 19)
+	(hasoutput 9)
+	(hasSensorM1 8)
+	(hasSensorM2 24)
+	(hasSensorM3 17))
+
+([Circle7] of  OperationCycle
+
+	(hasInput1 1)
+	(hasInput2 31)
+	(hasInput3 7)
+	(hasInput4 22)
+	(hasoutput 26)
+	(hasSensorM1 2)
+	(hasSensorM2 0)
+	(hasSensorM3 26))
+
+([Circle8] of  OperationCycle
+
+	(hasInput1 0)
+	(hasInput2 31)
+	(hasInput3 3)
+	(hasInput4 23)
+	(hasoutput 0)
+	(hasSensorM1 0)
+	(hasSensorM2 0)
+	(hasSensorM3 0))
+
+([Circle9] of  OperationCycle
+
+	(hasInput1 31)
+	(hasInput2 1)
+	(hasInput3 6)
+	(hasInput4 8)
+	(hasoutput 30)
+	(hasSensorM1 30)
+	(hasSensorM2 30)
+	(hasSensorM3 0))
+
+([Input1] of  Input
+
+	(InputTo
+		[System1]
+		[%CE%911])
+	(InputValue 21))
+
+([Input2] of  Input
+
+	(InputTo
+		[System1]
+		[%CE%A01])
+	(InputValue 28))
+
+([Input3] of  Input
+
+	(InputTo
+		[System1]
+		[%CE%A02])
+	(InputValue 10))
+
+([Input4] of  Input
+
+	(InputTo
+		[System1]
+		[%CE%A02])
+	(InputValue 25))
+
+([M1] of  Sensor
+
+	(hasStatus Normal)
+	(Measures 10)
+	(Monitors [%CE%911])
+	(SensorTo [System1]))
+
+([M2] of  Sensor
+
+	(hasStatus ShortCircuitFault)
+	(Measures 24)
+	(Monitors [%CE%A01])
+	(SensorTo [System1]))
+
+([M3] of  Sensor
+
+	(Measures 26)
+	(Monitors [%CE%A02])
+	(SensorTo [System1]))
+
+([OUT] of  Output
+
+	(OutputTo
+		[%CE%912]
+		[System1])
+	(OutputValue 18))
+
+([System1] of  System
+
+	(hasComponent
+		[%CE%911]
+		[%CE%912]
+		[%CE%A01]
+		[%CE%A02])
+	(hasInput
+		[Input4]
+		[Input3]
+		[Input2]
+		[Input1])
+	(hasSensor
+		[M1]
+		[M2]
+		[M3])
+	(has%CE%9Futput [OUT]))
+
+([%CE%911] of  Adder
+
+	(ComponentTo [System1])
+	(hasInput
+		[Input1]
+		[Input1])
+	(hasStatus Normal)
+	(has%CE%9Futput [M1])
+	(MonitoredBy [M1]))
+
+([%CE%912] of  Adder
+
+	(ComponentTo [System1])
+	(hasInput
+		[M2]
+		[M3])
+	(hasStatus Normal)
+	(has%CE%9Futput [OUT])
+	(MonitoredBy [OUT]))
+
+([%CE%A01] of  Multiplier
+
+	(ComponentTo [System1])
+	(hasInput
+		[Input2]
+		[M1])
+	(hasStatus Normal)
+	(has%CE%9Futput [M2])
+	(MonitoredBy [M2]))
+
+([%CE%A02] of  Multiplier
+
+	(ComponentTo [System1])
+	(hasInput
+		[Input3]
+		[Input4])
+	(hasStatus Normal)
+	(has%CE%9Futput [M3])
+	(MonitoredBy [M3]))
