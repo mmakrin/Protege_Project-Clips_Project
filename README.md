@@ -86,3 +86,140 @@ The ontology is designed to be:
 
 A full class hierarchy diagram is provided in the report (page 3), showing:
 
+
+# Fault Diagnosis Expert System for an Electronic Circuit (CLIPS)
+
+This project implements a **rule-based expert system in CLIPS** for diagnosing faults in an electronic circuit.
+
+It extends the ontology developed in Protégé by integrating the static knowledge into CLIPS templates and implementing dynamic reasoning rules for fault detection.
+
+Course: **Knowledge Systems (Συστήματα Γνώσης)** – Academic Year 2024–2025.
+
+---
+
+## 📘 Project Description
+
+The system:
+
+- Monitors circuit inputs, outputs, and sensor values over time
+- Detects abnormal behavior
+- Identifies:
+  - Faulty component (Adder / Multiplier)
+  - Type of fault:
+    - Short circuit
+    - Most Significant Bit off (MSB off)
+    - Sensor fault
+
+This project follows Assignment 2 of the course and builds upon the ontology developed in Assignment 1 :contentReference[oaicite:2]{index=2}.
+
+---
+
+## 🧠 Knowledge Representation
+
+### Templates
+
+Defined for:
+
+- Adder
+- Multiplier
+- OperationCycle
+
+Each template includes:
+
+- Inputs
+- Outputs
+- Sensor values
+- Component status
+
+---
+
+### Classes (mapped from ontology)
+
+- System
+- ElectronicComponent
+- Adder
+- Multiplier
+- Input
+- Output
+- Sensor
+- OperationCycle
+
+---
+
+## 🔁 Initial Facts
+
+Initial facts define:
+
+- Input values (`hasInput1`–`hasInput4`)
+- Sensor readings (`hasSensorM1`, `hasSensorM2`, `hasSensorM3`)
+- Output value (`hasOutput`)
+
+for each operation cycle.
+
+---
+
+## ⚙️ Component Behavior (Handlers)
+
+Each component can operate in:
+
+- **Normal operation**
+- **Short circuit**
+- **MSB off**
+
+---
+
+## 🧪 Fault Detection Rules
+
+### Adders
+
+Rules:
+
+- `monitor-adder1`
+- `monitor-adder2`
+
+Logic:
+
+| Condition | Expected Output |
+|----------|-----------------|
+| Normal | (input1 + input2) mod 32 |
+| Short circuit | 0 |
+| MSB off | (input1 + input2) mod 16 |
+| Otherwise | Sensor fault |
+
+---
+
+### Multipliers
+
+Rules:
+
+- `monitor-multiplier1`
+- `monitor-multiplier2`
+
+Logic:
+
+| Condition | Expected Output |
+|----------|-----------------|
+| Normal | (input1 × input2) mod 32 |
+| Short circuit | 0 |
+| MSB off | (input1 × input2) mod 16 |
+| Otherwise | Sensor fault |
+
+---
+
+## ✅ Normal Operation Rule
+
+The rule `normal-operation` confirms:
+
+- All components
+- All sensors
+- All outputs
+
+are functioning correctly, and prints a message indicating normal system operation.
+
+---
+
+## 🛠 Tools Used
+
+- CLIPS expert system shell
+- Protégé (ontology design)
+- Text editor / IDE
